@@ -11,7 +11,7 @@ const token = 'xxx.eyJyb2xlIjpbImFkbWluIl0sIm5hbWUiOiJUZXN0IiwicHJlZmVycmVkX3VzZ
 
 test('jwt view - no token', () => {
     const {getByText} = render(
-        <ReactKeycloakProvider authClient={createKeycloakStub()}>
+        <ReactKeycloakProvider authClient={createKeycloakStub(true)}>
             <JwtView/>
         </ReactKeycloakProvider>
     );
@@ -20,7 +20,7 @@ test('jwt view - no token', () => {
 
 test('jwt view - token', () => {
     const {getByText} = render(
-        <ReactKeycloakProvider authClient={createKeycloakStub()}>
+        <ReactKeycloakProvider authClient={createKeycloakStub(true)}>
             <JwtView token={token}/>
         </ReactKeycloakProvider>
     );

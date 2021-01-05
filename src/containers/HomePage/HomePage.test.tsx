@@ -9,7 +9,7 @@ import HomePage from './HomePage';
 
 test('home page', () => {
     const {getByText} = render(
-        <ReactKeycloakProvider authClient={createKeycloakStub()}>
+        <ReactKeycloakProvider authClient={createKeycloakStub(true)}>
             <HomePage/>
         </ReactKeycloakProvider>
     );

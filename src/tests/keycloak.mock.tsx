@@ -1,7 +1,9 @@
 import {KeycloakInstance} from 'keycloak-js';
 
-export const createKeycloakStub = (): KeycloakInstance => {
+export const createKeycloakStub = (authenticated: boolean, token?: string): KeycloakInstance => {
     return {
+        authenticated,
+        token,
         init: jest.fn().mockResolvedValue(true),
         updateToken: jest.fn(),
         login: jest.fn(),
