@@ -8,15 +8,12 @@ import Keycloak from 'keycloak-js';
 import {ReactKeycloakProvider} from '@react-keycloak/web';
 import {keycloakConfig, keycloakInitConfig} from './keycloak';
 
-const App = (): JSX.Element => {
-    return (
-        <ReactKeycloakProvider
-            authClient={Keycloak(keycloakConfig)}
-            initOptions={keycloakInitConfig}
-        >
-            <AppRouter/>
-        </ReactKeycloakProvider>
-    );
-};
+const App = (): JSX.Element =>
+    <ReactKeycloakProvider
+        authClient={new Keycloak(keycloakConfig)}
+        initOptions={keycloakInitConfig}
+    >
+        <AppRouter/>
+    </ReactKeycloakProvider>;
 
 export default App;

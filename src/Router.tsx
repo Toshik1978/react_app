@@ -22,30 +22,25 @@ interface PrivateRouteParams extends RouteProps {
         | React.ComponentType<any>
 }
 
-function PrivateRoute({
-                          component: Component,
-                          ...rest
-                      }: PrivateRouteParams) {
+const PrivateRoute = ({component: Component, ...rest}: PrivateRouteParams) => {
     const {keycloak} = useKeycloak();
 
     return (
         <Route
             {...rest}
             render={(props: any) =>
-                keycloak?.authenticated ? (
-                    <Component {...props} />
-                ) : (
+                keycloak?.authenticated ?
+                    <Component {...props} /> :
                     <Redirect
                         to={{
                             pathname: '/login',
                             state: {from: props.location},
                         }}
                     />
-                )
             }
         />
     );
-}
+};
 
 export const AppRouter = (): JSX.Element => {
     const classes = useStyles();

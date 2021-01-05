@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {Grid, Typography} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {AccountBox} from '@material-ui/icons';
 
 const useStyles = makeStyles({

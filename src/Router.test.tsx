@@ -7,17 +7,19 @@ import {createKeycloakStub} from './tests/keycloak.mock';
 
 import {AppRouter} from './Router';
 
-// mock keycloak hook
+// Mock keycloak hook
 let mockInitialized = false;
 const mockKeycloakStub = createKeycloakStub();
 jest.mock('@react-keycloak/web', () => {
     const originalModule = jest.requireActual('@react-keycloak/web');
     return {
         ...originalModule,
-        useKeycloak: () => ({
-            initialized: mockInitialized,
-            keycloak: mockKeycloakStub
-        })
+        useKeycloak: () => {
+            return {
+                initialized: mockInitialized,
+                keycloak: mockKeycloakStub
+            };
+        }
     };
 });
 

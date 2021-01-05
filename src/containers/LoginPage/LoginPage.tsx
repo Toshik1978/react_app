@@ -11,13 +11,13 @@ import {useKeycloak} from '@react-keycloak/web';
 const LoginPage = (): JSX.Element => {
     const location = useLocation<{ [key: string]: unknown }>();
     const currentLocationState = location.state || {
-        from: {pathname: '/'},
+        from: {pathname: '/'}
     };
 
     const {keycloak} = useKeycloak();
 
     if (keycloak?.authenticated) {
-        return (<Redirect to={currentLocationState?.from as string}/>);
+        return <Redirect to={currentLocationState.from as string}/>;
     }
 
     return (

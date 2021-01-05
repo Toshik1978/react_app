@@ -24,5 +24,5 @@ test('jwt view - token', () => {
             <JwtView token={token}/>
         </ReactKeycloakProvider>
     );
-    expect(getByText(/"preferred_username": "test"/i)).toBeInTheDocument();
+    expect(getByText(/"preferred_username": "test"/ui)).toBeInTheDocument();
 });
