@@ -10,7 +10,8 @@ import {keycloakConfig, keycloakInitConfig} from './keycloak';
 
 const App = (): JSX.Element =>
     <ReactKeycloakProvider
-        authClient={new Keycloak(keycloakConfig)}
+        /* eslint-disable-next-line no-extra-parens */
+        authClient={new (Keycloak as any)(keycloakConfig)}
         initOptions={keycloakInitConfig}
     >
         <AppRouter/>

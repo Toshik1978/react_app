@@ -2,11 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        filename: 'bundle.[fullhash].js',
+        filename: 'app.bundle.[fullhash].js',
         path: path.resolve(__dirname, 'build')
     },
     plugins: [
@@ -28,18 +29,23 @@ module.exports = {
         }),
         new ESLintPlugin({
             context: 'src',
-            extensions: ['js','ts','tsx']
+            extensions: ['js', 'ts', 'tsx']
         }),
+        new ForkTsCheckerWebpackPlugin({
+            eslint: {
+                files: './src/**/*.{ts,tsx,js,jsx}'
+            }
+        })
     ],
     module: {
         rules: [
             {
-                test: /\.[jt]sx?$/,
+                test: /\.[jt]sx?$/u,
                 use: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/u
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.s[ac]ss$/ui,
                 use: [
                     'style-loader',
                     'css-loader',
@@ -47,7 +53,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|svg)$/i,
+                test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|svg)$/ui,
                 use: 'url-loader'
             }
         ],

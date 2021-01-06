@@ -1,15 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["es6", "dom"],
-    "module": "es6",
+    // Target latest version of ECMAScript.
+    "target": "esnext",
+    // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
-    "jsx": "preserve",
-    "strict": true,
+    // Process & infer types from .js files.
     "allowJs": true,
-    "useDefineForClassFields": true,
-    "removeComments": true,
-    "sourceMap": true
+    // Enable strictest settings like strictNullChecks & noImplicitAny.
+    "strict": true,
+    // Disallow features that require cross-file information for emit.
+    "isolatedModules": true,
+    // Import non-ES modules as default imports.
+    "esModuleInterop": true,
+    // Emit .jsx files with the JSX unchanged
+    "jsx": "preserve",
+    // Generate .d.ts files for every TypeScript or JavaScript file inside your project
+    "declaration": true,
+    // Root directory for where declaration files are emitted.
+    "declarationDir": "build/types"
   },
   "include": [
     "src"
