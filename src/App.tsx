@@ -1,12 +1,13 @@
 import * as React from 'react';
 
-import {AppRouter} from './Router';
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Keycloak from 'keycloak-js';
 import {ReactKeycloakProvider} from '@react-keycloak/web';
 import {keycloakConfig, keycloakInitConfig} from './keycloak';
+
+import {AppRouter} from './Router';
+import {Stores} from './Stores';
 
 const App = (): JSX.Element =>
     <ReactKeycloakProvider
@@ -14,7 +15,9 @@ const App = (): JSX.Element =>
         authClient={new (Keycloak as any)(keycloakConfig)}
         initOptions={keycloakInitConfig}
     >
-        <AppRouter/>
+        <Stores>
+            <AppRouter/>
+        </Stores>
     </ReactKeycloakProvider>;
 
 export default App;
